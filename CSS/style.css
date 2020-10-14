@@ -18,6 +18,15 @@ div.form {
      font-size: 50px;
 }
 
+.navbar-footer{
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 25px;
+}
+
 form {
      margin-bottom: 20px;
 }
