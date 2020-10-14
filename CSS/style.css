@@ -24,6 +24,8 @@ form {
 
 #msg.error {
      color: #e6252c;
+     text-align: center;
+     font-size: 20px;
 }
 /* .col-xs-12.col-md-12.col-xs-12 {
      border: 1px solid lightgray;
