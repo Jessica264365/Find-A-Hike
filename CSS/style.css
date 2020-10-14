@@ -1,33 +1,33 @@
 body {
-     text-align: center;
+  text-align: center;
 }
 div.form {
-     display: inline-block;
+  display: inline-block;
 }
 .navbar-header {
-     float: left;
-     padding: 15px;
-     text-align: center;
-     width: 100%;
-     color: white;
-     font-size: 50px;
+  float: left;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+  color: white;
+  font-size: 50px;
 }
 .navbar-brand {
-     float: none;
-     text-align: center;
-     font-size: 50px;
+  float: none;
+  text-align: center;
+  font-size: 50px;
 }
 
 form {
-     margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 #msg.error {
-     color: #e6252c;
+  color: #e6252c;
 }
 /* .col-xs-12.col-md-12.col-xs-12 {
      border: 1px solid lightgray;
 } */
 h1 {
-     font-weight: bold;
+  font-weight: bold;
 }

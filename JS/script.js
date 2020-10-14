@@ -1,6 +1,7 @@
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
 let submitBtn = $("#submitButton");
+let displayResults = $("#displayResults");
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
@@ -37,6 +38,36 @@ submitBtn.on("click", function (event) {
       method: "GET",
     }).then(function (response) {
       console.log(response);
+      // displayResults.text(JSON.stringify(response));
+
+      for (let i = 0; i < response.trails[i].length; i++) {
+        let newDiv = $("<div>");
+        let hikeNameDiv = $("<div>");
+        let hikeSummaryDiv = $("<div>");
+        let hikeLengthDiv = $("<div>");
+        let hikeImgDiv = $("<div>");
+
+        let hikeName = response.trails[i].name;
+        let hikeSummary = response.trails[i].summary;
+        let hikeLength = response.trails[i].length;
+        let hikeImg = response.trails[i].imgMedium;
+        // console.log(response.trails[0].name);
+
+        hikeNameDiv.append(hikeName);
+        hikeSummaryDiv.append(hikeSummary);
+        hikeLengthDiv.append(hikeLength);
+        let image = $("<img>");
+
+        image.attr("src", hikeImg);
+        hikeImgDiv.append(image);
+
+        newDiv.append(hikeNameDiv);
+        newDiv.append(hikeSummaryDiv);
+        newDiv.append(hikeLengthDiv);
+        newDiv.append(hikeImgDiv);
+
+        displayResults.append(newDiv);
+      }
     });
   });
 });
