@@ -1,16 +1,16 @@
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
-let userInputLocation = $("#citySearch");
 
 let submitBtn = $("#submitButton");
-let locationQueryURL =
-  "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-  userInputLocation +
-  "," +
-  "CA" +
-  locationAPIKey;
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
+  let userInputLocation = $("#citySearch").val();
+  let locationQueryURL =
+    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+    userInputLocation +
+    locationAPIKey;
+
+  console.log(userInputLocation);
 
   $.ajax({
     url: locationQueryURL,
