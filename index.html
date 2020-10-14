@@ -29,39 +29,80 @@
     </header>
 
     <section class="container">
-      <div class="row">
-        <div class="col-xs-12 col-md-12 col-xs-12">
-          <!--  -->
-          <form id="city-search">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Enter city"
-                id="citySearch"
-              />
-              <div class="input-group-btn">
-                <button class="btn btn-primary" id="submitButton" type="submit">
-                  <span class="glyphicon glyphicon-search"></span>
-                </button>
-                <!-- <section id="msg"></section> -->
-              </div>
-            </div>
-          </form>
-          <!--  -->
-        </div>
-      </div>
-      <section class="row">
-        <div class="col-xs-2 col-md-2 col-xs-12"></div>
-        <div class="col-xs-8 col-md-8"></div>
-        <nav class="nav">
-          <a class="nav-link active" id="results" href="#">Results</a>
-          <a class="nav-link" href="#">Favorites</a>
-          <a class="nav-link" href="#">Places</a>
-          <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
-        </nav>
-        <div class="col-xs-2 col-md-2" id="displayResults"></div>
+  
+  <div class="row">
+    <div class="col-md-4 col-xs-12"></div>
+    <div class="col-md-4">
+      
+<!--  -->
+<form id="city-search">
+  <section class="form-group">
+  <section class="input-group">
+    <input type="text" class="form-control" placeholder="Enter city" id="txtSearch"/>
+    <section class="input-group-btn">
+      <!-- submit button -->
+      <button class="btn btn-primary" id="button" type="submit">
+        <span class="glyphicon glyphicon-search"></span>
+      </button>                
+    </section>
+    </section>
+  </section>
+    </form>
+    <!-- msg section to display error message -->
+    <!-- <section id="msg"></section> -->
+      
+        <!--  -->
+   
+</div>
+<div class="col-md-4"></div>
+
+  
+  </div>
+  <section class="row">
+    <div class="col-md-4 col-xs-12"></div>
+      
+    <div class="col-md-4">
+      <section id="msg">
+        
       </section>
+    </div>
+    <div class="col-md-4">
+      
+    </div>
+  </section>
+
+  <section class="row">
+    <div class="col-md-4 col-xs-12">
+      
+          
+     
+    </div>
+    <div class="col-md-4">
+      
+         <ul class="list-group"></ul> 
+     
+    </div>
+    <div class="col-md-4">
+      
+      
+  
+ </div>
+  </section>
+  <section class="row">
+    <div class="col-md-2 col-xs-12"></div>
+    <div class="col-md-8">
+      <nav class="nav">
+        <a class="nav-link active" href="#">Results</a>
+        <a class="nav-link" href="#">Favorites</a>
+        <a class="nav-link" href="#">Places</a> 
+         <!-- <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> -->
+      </nav>
+    </div>
+    
+    <div class="col-md-2"></div>
+  </section>
+
+    <!-- End of container section -->
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
