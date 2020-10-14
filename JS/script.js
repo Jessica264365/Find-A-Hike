@@ -40,7 +40,7 @@ submitBtn.on("click", function (event) {
       console.log(response);
       // displayResults.text(JSON.stringify(response));
 
-      for (let i = 0; i < response.trails[i].length; i++) {
+      for (let i = 0; i < response.trails.length; i++) {
         let newDiv = $("<div>");
         let hikeNameDiv = $("<div>");
         let hikeSummaryDiv = $("<div>");
