@@ -90,6 +90,25 @@ submitBtn.on("click", function (event) {
         newRow.append(thirdColumn);
 
         displayResults.append(newRow);
+
+        saveAsFav.on("click", function () {
+          let favorites = {
+            name: hikeName,
+            summary: hikeSummary,
+            length: hikeLength,
+            image: hikeImg,
+          };
+
+          console.log(this);
+
+          let savedFavorites = localStorage.getItem(null, "favorites")
+            ? localStorage.parse(getItem(null, "favorites"))
+            : [];
+
+          savedFavorites.push(favorites);
+
+          localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+        });
       }
     });
   });
