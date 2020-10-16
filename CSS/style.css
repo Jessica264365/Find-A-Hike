@@ -1,39 +1,62 @@
 body {
-  text-align: center;
+     text-align: center;
 }
+/* header {
+     height: 50px;
+} */
 div.form {
-  display: inline-block;
+     display: inline-block;
 }
 .navbar-header {
-  float: left;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 50px;
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 50px;
 }
 .navbar-brand {
-  float: none;
-  text-align: center;
-  font-size: 50px;
+     float: none;
+     text-align: center;
+     font-size: 50px;
 }
 
 form {
-  margin-bottom: 20px;
+     margin-bottom: 20px;
 }
 
-#msg.error {
-<<<<<<< HEAD
+#msgid.error {
      color: #e6252c;
-     text-align: center;
      font-size: 20px;
-=======
-  color: #e6252c;
->>>>>>> develop
 }
-/* .col-xs-12.col-md-12.col-xs-12 {
-     border: 1px solid lightgray;
-} */
+
 h1 {
-  font-weight: bold;
+     font-weight: bold;
+}
+ul {
+     border: 1px solid gray;
+}
+img {
+     float: right;
+     padding-right: 20px;
+}
+.result {
+     border: 1px solid gray;
+}
+
+.paraContainer {
+     display: flex;
+}
+
+.city {
+     background-color: white;
+     border-width: thin;
+     border-color: #80808052;
+}
+p {
+     text-align: left;
+     padding-left: 20px;
+}
+.summary {
+     margin-bottom: 100px;
 }

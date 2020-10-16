@@ -1,9 +1,17 @@
-var submitEl = $("#button");
-var inputEL = $("#txtSearch");
-var messageEL = $("#msg");
+// var submitEl = $("#button");
+// var inputEL = $("#txtSearch");
+var clearButtonEL = $("#clearButton");
+var messageEL = $("#msgid");
+var cityListEL = $(".citylist");
+// var userInputLocation = $("#citySearch").val();
 //retrieve cities from local storage
-var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
+var cityList = JSON.parse(localStorage.getItem("cities")) || [];
 var listEL = $(".list-group");
+var hikeNameDivEL = $(".hikeNameDiv");
+var hikeSummaryDivEL = $(".hikeSummaryDiv");
+var hikeLengthDivEL = $(".hikeLengthDiv");
+
+var hikeImgEL = $(".hikeImg");
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
@@ -13,6 +21,7 @@ let displayResults = $("#displayResults");
 submitBtn.on("click", function (event) {
   event.preventDefault();
   let userInputLocation = $("#citySearch").val();
+  storeCityToList(userInputLocation);
   let locationQueryURL =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     userInputLocation +
@@ -48,37 +57,77 @@ submitBtn.on("click", function (event) {
       // displayResults.text(JSON.stringify(response));
 
       for (let i = 0; i < response.trails.length; i++) {
-        let newDiv = $("<div>");
-        let hikeNameDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
-        let hikeLengthDiv = $("<div>");
-        let hikeImgDiv = $("<div>");
+        // let newDiv = $("<div>");
+        // let hikeNameDiv = $("<div>");
+        // let hikeSummaryDiv = $("<div>");
+        // let hikeLengthDiv = $("<div>");
+        // let hikeImgDiv = $("<div>");
 
-        let hikeName = response.trails[i].name;
-        let hikeSummary = response.trails[i].summary;
-        let hikeLength = response.trails[i].length;
-        let hikeImg = response.trails[i].imgMedium;
+        // let hikeName = response.trails[i].name;
+        hikeNameDivEL.text(response.trails[i].name);
+        console.log(hikeNameDivEL);
+        // let hikeSummary = response.trails[i].summary;
+        hikeSummaryDivEL.text(response.trails[i].summary)
+        // let hikeLength = response.trails[i].length;
+        hikeLengthDivEL.text(response.trails[i].length)
+        // let hikeImg = response.trails[i].imgMedium;
+        hikeImgEL.text(response.trails[i].imgMedium);
         // console.log(response.trails[0].name);
 
-        hikeNameDiv.append(hikeName);
-        hikeSummaryDiv.append(hikeSummary);
-        hikeLengthDiv.append(hikeLength);
-        let image = $("<img>");
+        // hikeNameDiv.append(hikeName);
+        // hikeSummaryDiv.append(hikeSummary);
+        // hikeLengthDiv.append(hikeLength);
+        // let image = $("<img>");
 
-        image.attr("src", hikeImg);
-        hikeImgDiv.append(image);
+        // image.attr("src", hikeImg);
+        // hikeImgDiv.append(image);
 
-        newDiv.append(hikeNameDiv);
-        newDiv.append(hikeSummaryDiv);
-        newDiv.append(hikeLengthDiv);
-        newDiv.append(hikeImgDiv);
+        // newDiv.append(hikeNameDiv);
+        // newDiv.append(hikeSummaryDiv);
+        // newDiv.append(hikeLengthDiv);
+        // newDiv.append(hikeImgDiv);
 
-        displayResults.append(newDiv);
+        // displayResults.append(newDiv);
       }
     });
   });
 });
 
+//function
+function storeCityToList(cityName)
+{
+  if(cityName === "")
+  {
+      displayMessage("error","please enter city name");     
+  }
+  
+  if(cityName != "")
+  {
+    console.log(cityList.length);
+    if(cityList.length >= 8)
+    {
+      console.log("listlength");
+      clearList();
+      console.log(cityList.length);
+    }
+    // cityListEL.addClass("show");
+  cityList.push(cityName);
+  messageEL.addClass("hide");
+  localStorage.setItem("cities",JSON.stringify(cityList));
+  
+  
+  renderCities();
+  }
+
+
+}
+//function to remove city
+function clearList()
+{
+  localStorage.clear();
+  // cityListEL.addClass("hide");
+  console.log(cityList.length);
+}
 
 
 //function to display error message when user click on submit button without 
@@ -95,7 +144,7 @@ function renderCities(){
   listEL.empty();
   console.log("render function called");    
 
-if(JSON.parse(localStorage.getItem("searchCities")))
+if(JSON.parse(localStorage.getItem("cities")))
 {
 //looping thru the city array to display each city
 for(var i=0;i<cityList.length;i++)
@@ -110,25 +159,21 @@ listEL.append(button);
 }
 
 }
+//
+function appendCityToInputText()
+{
+  let city = $(this).attr("data-name");
+  console.log(city);
+  $("#citySearch").val(city);
 
-// submit button click event
-submitEl.on("click",function(event){
-  console.log("button clicked");
-  event.preventDefault();
-  var city = inputEL.val().trim();
-  if(city === "")
-  {
-      displayMessage("error","please enter city name");     
-  }
-  
-  if(city != "")
-  {
-  cityList.push(city);
-  messageEL.addClass("hide");
-  localStorage.setItem("searchCities",JSON.stringify(cityList));
-  
-  inputEL.val("");
-  renderCities();
-  }
+}
+//
+$(document).on("click",".city",appendCityToInputText)
+
+
+
+clearButtonEL.on("click",function(){
+  $("#citySearch").val("");
+
 });
 renderCities();
