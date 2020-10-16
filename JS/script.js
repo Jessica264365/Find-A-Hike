@@ -57,37 +57,37 @@ submitBtn.on("click", function (event) {
       // displayResults.text(JSON.stringify(response));
 
       for (let i = 0; i < response.trails.length; i++) {
-        // let newDiv = $("<div>");
-        // let hikeNameDiv = $("<div>");
-        // let hikeSummaryDiv = $("<div>");
-        // let hikeLengthDiv = $("<div>");
-        // let hikeImgDiv = $("<div>");
+        let newDiv = $("<div>");
+        let hikeNameDiv = $("<div>");
+        let hikeSummaryDiv = $("<div>");
+        let hikeLengthDiv = $("<div>");
+        let hikeImgDiv = $("<div>");
 
-        // let hikeName = response.trails[i].name;
+        let hikeName = response.trails[i].name;
         hikeNameDivEL.text(response.trails[i].name);
         console.log(hikeNameDivEL);
-        // let hikeSummary = response.trails[i].summary;
-        hikeSummaryDivEL.text(response.trails[i].summary)
-        // let hikeLength = response.trails[i].length;
-        hikeLengthDivEL.text(response.trails[i].length)
-        // let hikeImg = response.trails[i].imgMedium;
+        let hikeSummary = response.trails[i].summary;
+        // hikeSummaryDivEL.text(response.trails[i].summary)
+        let hikeLength = response.trails[i].length;
+        // hikeLengthDivEL.text(response.trails[i].length)
+        let hikeImg = response.trails[i].imgMedium;
         hikeImgEL.text(response.trails[i].imgMedium);
         // console.log(response.trails[0].name);
 
         // hikeNameDiv.append(hikeName);
         // hikeSummaryDiv.append(hikeSummary);
         // hikeLengthDiv.append(hikeLength);
-        // let image = $("<img>");
+        let image = $("<img>");
 
-        // image.attr("src", hikeImg);
-        // hikeImgDiv.append(image);
+        image.attr("src", hikeImg);
+        hikeImgDiv.append(image);
 
-        // newDiv.append(hikeNameDiv);
-        // newDiv.append(hikeSummaryDiv);
-        // newDiv.append(hikeLengthDiv);
-        // newDiv.append(hikeImgDiv);
+        newDiv.append(hikeNameDiv);
+        newDiv.append(hikeSummaryDiv);
+        newDiv.append(hikeLengthDiv);
+        newDiv.append(hikeImgDiv);
 
-        // displayResults.append(newDiv);
+        displayResults.append(newDiv);
       }
     });
   });
