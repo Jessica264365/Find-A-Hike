@@ -1,14 +1,14 @@
-var submitEl = $("#button");
-var inputEL = $("#txtSearch");
-var messageEL = $("#msg");
-//retrieve cities from local storage
-var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
-var listEL = $(".list-group");
+// var submitEl = $("#button");
+// var inputEL = $("#txtSearch");
+// var messageEL = $("#msg");
+// //retrieve cities from local storage
+// var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
+// var listEL = $(".list-group");
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
 let submitBtn = $("#submitButton");
-let displayResults = $("#displayResults");
+let displayResults = $("#displayResult");
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
@@ -84,54 +84,54 @@ submitBtn.on("click", function (event) {
 
 
 
-//function to display error message when user click on submit button without 
-// entering city in input box
-function displayMessage(type,message)
-{
-    messageEL.text(message);
-    messageEL.attr("class",type);
+// //function to display error message when user click on submit button without 
+// // entering city in input box
+// function displayMessage(type,message)
+// {
+//     messageEL.text(message);
+//     messageEL.attr("class",type);
 
-}
+// }
 
-// function to display cities
-function renderCities(){
-  listEL.empty();
-  console.log("render function called");    
+// // function to display cities
+// function renderCities(){
+//   listEL.empty();
+//   console.log("render function called");    
 
-if(JSON.parse(localStorage.getItem("searchCities")))
-{
-//looping thru the city array to display each city
-for(var i=0;i<cityList.length;i++)
-{
-  var button = $("<button>");
-  button.addClass("city")
-  button.attr("data-name",cityList[i]);
-button.text(cityList[i]);
-console.log("city added")
-listEL.append(button);
-}
-}
+// if(JSON.parse(localStorage.getItem("searchCities")))
+// {
+// //looping thru the city array to display each city
+// for(var i=0;i<cityList.length;i++)
+// {
+//   var button = $("<button>");
+//   button.addClass("city")
+//   button.attr("data-name",cityList[i]);
+// button.text(cityList[i]);
+// console.log("city added")
+// listEL.append(button);
+// }
+// }
 
-}
+// }
 
-// submit button click event
-submitEl.on("click",function(event){
-  console.log("button clicked");
-  event.preventDefault();
-  var city = inputEL.val().trim();
-  if(city === "")
-  {
-      displayMessage("error","please enter city name");     
-  }
+// // submit button click event
+// submitEl.on("click",function(event){
+//   console.log("button clicked");
+//   event.preventDefault();
+//   var city = inputEL.val().trim();
+//   if(city === "")
+//   {
+//       displayMessage("error","please enter city name");     
+//   }
   
-  if(city != "")
-  {
-  cityList.push(city);
-  messageEL.addClass("hide");
-  localStorage.setItem("searchCities",JSON.stringify(cityList));
+//   if(city != "")
+//   {
+//   cityList.push(city);
+//   messageEL.addClass("hide");
+//   localStorage.setItem("searchCities",JSON.stringify(cityList));
   
-  inputEL.val("");
-  renderCities();
-  }
-});
-renderCities();
+//   inputEL.val("");
+//   renderCities();
+//   }
+// });
+// renderCities();
