@@ -18,18 +18,21 @@ div.form {
   font-size: 50px;
 }
 
+.navbar-footer{
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 25px;
+}
+
 form {
   margin-bottom: 20px;
 }
 
 #msg.error {
-<<<<<<< HEAD
-     color: #e6252c;
-     text-align: center;
-     font-size: 20px;
-=======
   color: #e6252c;
->>>>>>> develop
 }
 /* .col-xs-12.col-md-12.col-xs-12 {
      border: 1px solid lightgray;
