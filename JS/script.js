@@ -1,24 +1,9 @@
 // var submitEl = $("#button");
 // var inputEL = $("#txtSearch");
-<<<<<<< HEAD
-var clearButtonEL = $("#clearButton");
-var messageEL = $("#msgid");
-var cityListEL = $(".citylist");
-// var userInputLocation = $("#citySearch").val();
-//retrieve cities from local storage
-var cityList = JSON.parse(localStorage.getItem("cities")) || [];
-var listEL = $(".list-group");
-var hikeNameDivEL = $(".hikeNameDiv");
-var hikeSummaryDivEL = $(".hikeSummaryDiv");
-var hikeLengthDivEL = $(".hikeLengthDiv");
-
-var hikeImgEL = $(".hikeImg");
-=======
 // var messageEL = $("#msg");
 // //retrieve cities from local storage
 // var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
 // var listEL = $(".list-group");
->>>>>>> 0e88d279f12c4267c12be27e33f9186939cdf3d8
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
@@ -140,55 +125,6 @@ function clearList()
 }
 
 
-<<<<<<< HEAD
-//function to display error message when user click on submit button without 
-// entering city in input box
-function displayMessage(type,message)
-{
-    messageEL.text(message);
-    messageEL.attr("class",type);
-
-}
-
-// function to display cities
-function renderCities(){
-  listEL.empty();
-  console.log("render function called");    
-
-if(JSON.parse(localStorage.getItem("cities")))
-{
-//looping thru the city array to display each city
-for(var i=0;i<cityList.length;i++)
-{
-  var button = $("<button>");
-  button.addClass("city")
-  button.attr("data-name",cityList[i]);
-button.text(cityList[i]);
-console.log("city added")
-listEL.append(button);
-}
-}
-
-}
-//
-function appendCityToInputText()
-{
-  let city = $(this).attr("data-name");
-  console.log(city);
-  $("#citySearch").val(city);
-
-}
-//
-$(document).on("click",".city",appendCityToInputText)
-
-
-
-clearButtonEL.on("click",function(){
-  $("#citySearch").val("");
-
-});
-renderCities();
-=======
 // //function to display error message when user click on submit button without 
 // // entering city in input box
 // function displayMessage(type,message)
@@ -240,4 +176,3 @@ renderCities();
 //   }
 // });
 // renderCities();
->>>>>>> 0e88d279f12c4267c12be27e33f9186939cdf3d8
