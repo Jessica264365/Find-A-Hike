@@ -1,7 +1,12 @@
+// var messageEL = $("#msg");
+//retrieve cities from local storage
+var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
+var listEL = $(".list-group");
+
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
 let submitBtn = $("#submitButton");
-let displayResults = $("#displayResults");
+let displayResults = $("#displayResult");
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
@@ -41,11 +46,22 @@ submitBtn.on("click", function (event) {
       // displayResults.text(JSON.stringify(response));
 
       for (let i = 0; i < response.trails.length; i++) {
-        let newDiv = $("<div>");
+        let newRow = $("<div>");
+        newRow.addClass("row");
+        newRow.attr("style", "padding: 20px");
+        let firstColumn = $("<p>");
+        firstColumn.addClass("col-xs-3 col-md-3");
+        // let newDiv = $("<div>");
+        let secondColumn = $("<p>");
+        secondColumn.addClass("col-xs-6 col-md-6");
         let hikeNameDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
+        let thirdColumn = $("<div>");
+        thirdColumn.addClass("col-xs-3 col-md-3");
         let hikeImgDiv = $("<div>");
+        let hikeSummaryDiv = $("<div>");
+        let saveAsFav = $("<button>");
+        saveAsFav.text("Add to Favorites");
 
         let hikeName = response.trails[i].name;
         let hikeSummary = response.trails[i].summary;
@@ -57,17 +73,76 @@ submitBtn.on("click", function (event) {
         hikeSummaryDiv.append(hikeSummary);
         hikeLengthDiv.append(hikeLength);
         let image = $("<img>");
+        image.attr("style", "max-height: 100px");
+        image.attr("style", "max-width: 100px");
 
         image.attr("src", hikeImg);
         hikeImgDiv.append(image);
 
-        newDiv.append(hikeNameDiv);
-        newDiv.append(hikeSummaryDiv);
-        newDiv.append(hikeLengthDiv);
-        newDiv.append(hikeImgDiv);
+        firstColumn.append(hikeNameDiv);
+        secondColumn.append(hikeSummaryDiv);
+        firstColumn.append(hikeLengthDiv);
+        thirdColumn.append(hikeImgDiv);
+        firstColumn.append(saveAsFav);
 
-        displayResults.append(newDiv);
+        newRow.append(firstColumn);
+        newRow.append(secondColumn);
+        newRow.append(thirdColumn);
+
+        displayResults.append(newRow);
       }
     });
   });
 });
+
+// //function to display error message when user click on submit button without
+// // entering city in input box
+// function displayMessage(type,message)
+// {
+//     messageEL.text(message);
+//     messageEL.attr("class",type);
+
+// }
+
+// // function to display cities
+// function renderCities(){
+//   listEL.empty();
+//   console.log("render function called");
+
+// if(JSON.parse(localStorage.getItem("searchCities")))
+// {
+// //looping thru the city array to display each city
+// for(var i=0;i<cityList.length;i++)
+// {
+//   var button = $("<button>");
+//   button.addClass("city")
+//   button.attr("data-name",cityList[i]);
+// button.text(cityList[i]);
+// console.log("city added")
+// listEL.append(button);
+// }
+// }
+
+// }
+
+// // submit button click event
+// submitBtn.on("click",function(event){
+//   console.log("button clicked");
+//   event.preventDefault();
+//   var city = inputEL.val().trim();
+//   if(city === "")
+//   {
+//       displayMessage("error","please enter city name");
+//   }
+
+//   if(city != "")
+//   {
+//   cityList.push(city);
+//   messageEL.addClass("hide");
+//   localStorage.setItem("searchCities",JSON.stringify(cityList));
+
+//   inputEL.val("");
+//   renderCities();
+//   }
+// });
+// renderCities();
