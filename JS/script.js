@@ -1,9 +1,7 @@
-// var submitEl = $("#button");
-// var inputEL = $("#txtSearch");
 // var messageEL = $("#msg");
-// //retrieve cities from local storage
-// var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
-// var listEL = $(".list-group");
+//retrieve cities from local storage
+var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
+var listEL = $(".list-group");
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
@@ -48,11 +46,19 @@ submitBtn.on("click", function (event) {
       // displayResults.text(JSON.stringify(response));
 
       for (let i = 0; i < response.trails.length; i++) {
-        let newDiv = $("<div>");
+        let newRow = $("<div>");
+        newRow.addClass("row");
+        let firstColumn = $("<div>");
+        firstColumn.addClass("col-xs-3");
+        // let newDiv = $("<div>");
+        let secondColumn = $("<div>");
+        secondColumn.addClass("col-xs-6");
         let hikeNameDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
+        let thirdColumn = $("<div>");
+        thirdColumn.addClass("col-xs-3");
         let hikeImgDiv = $("<div>");
+        let hikeSummaryDiv = $("<div>");
         let saveAsFav = $("<button>");
         saveAsFav.text("Add to Favorites");
 
@@ -66,25 +72,28 @@ submitBtn.on("click", function (event) {
         hikeSummaryDiv.append(hikeSummary);
         hikeLengthDiv.append(hikeLength);
         let image = $("<img>");
+        image.addClass("style", "max-height: ")
 
         image.attr("src", hikeImg);
         hikeImgDiv.append(image);
 
-        newDiv.append(hikeNameDiv);
-        newDiv.append(hikeSummaryDiv);
-        newDiv.append(hikeLengthDiv);
-        newDiv.append(hikeImgDiv);
-        newDiv.append(saveAsFav);
+        firstColumn.append(hikeNameDiv);
+        secondColumn.append(hikeSummaryDiv);
+        firstColumn.append(hikeLengthDiv);
+        thirdColumn.append(hikeImgDiv);
+        firstColumn.append(saveAsFav);
 
-        displayResults.append(newDiv);
+        newRow.append(firstColumn);
+        newRow.append(secondColumn);
+        newRow.append(thirdColumn);
+
+        displayResults.append(newRow);
       }
     });
   });
 });
 
-
-
-// //function to display error message when user click on submit button without 
+// //function to display error message when user click on submit button without
 // // entering city in input box
 // function displayMessage(type,message)
 // {
@@ -96,7 +105,7 @@ submitBtn.on("click", function (event) {
 // // function to display cities
 // function renderCities(){
 //   listEL.empty();
-//   console.log("render function called");    
+//   console.log("render function called");
 
 // if(JSON.parse(localStorage.getItem("searchCities")))
 // {
@@ -115,21 +124,21 @@ submitBtn.on("click", function (event) {
 // }
 
 // // submit button click event
-// submitEl.on("click",function(event){
+// submitBtn.on("click",function(event){
 //   console.log("button clicked");
 //   event.preventDefault();
 //   var city = inputEL.val().trim();
 //   if(city === "")
 //   {
-//       displayMessage("error","please enter city name");     
+//       displayMessage("error","please enter city name");
 //   }
-  
+
 //   if(city != "")
 //   {
 //   cityList.push(city);
 //   messageEL.addClass("hide");
 //   localStorage.setItem("searchCities",JSON.stringify(cityList));
-  
+
 //   inputEL.val("");
 //   renderCities();
 //   }
