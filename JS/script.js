@@ -46,6 +46,8 @@ submitBtn.on("click", function (event) {
         let hikeSummaryDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
         let hikeImgDiv = $("<div>");
+        let saveAsFav = $("<button>");
+        saveAsFav.text("Add to Favorites");
 
         let hikeName = response.trails[i].name;
         let hikeSummary = response.trails[i].summary;
@@ -65,6 +67,7 @@ submitBtn.on("click", function (event) {
         newDiv.append(hikeSummaryDiv);
         newDiv.append(hikeLengthDiv);
         newDiv.append(hikeImgDiv);
+        newDiv.append(saveAsFav);
 
         displayResults.append(newDiv);
       }
