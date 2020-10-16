@@ -48,15 +48,16 @@ submitBtn.on("click", function (event) {
       for (let i = 0; i < response.trails.length; i++) {
         let newRow = $("<div>");
         newRow.addClass("row");
-        let firstColumn = $("<div>");
-        firstColumn.addClass("col-xs-3");
+        newRow.attr("style", "padding: 20px");
+        let firstColumn = $("<p>");
+        firstColumn.addClass("col-xs-3 col-md-3");
         // let newDiv = $("<div>");
-        let secondColumn = $("<div>");
-        secondColumn.addClass("col-xs-6");
+        let secondColumn = $("<p>");
+        secondColumn.addClass("col-xs-6 col-md-6");
         let hikeNameDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
         let thirdColumn = $("<div>");
-        thirdColumn.addClass("col-xs-3");
+        thirdColumn.addClass("col-xs-3 col-md-3");
         let hikeImgDiv = $("<div>");
         let hikeSummaryDiv = $("<div>");
         let saveAsFav = $("<button>");
@@ -72,7 +73,8 @@ submitBtn.on("click", function (event) {
         hikeSummaryDiv.append(hikeSummary);
         hikeLengthDiv.append(hikeLength);
         let image = $("<img>");
-        image.addClass("style", "max-height: ")
+        image.attr("style", "max-height: 100px");
+        image.attr("style", "max-width: 100px");
 
         image.attr("src", hikeImg);
         hikeImgDiv.append(image);
