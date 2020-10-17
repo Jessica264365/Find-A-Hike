@@ -1,9 +1,7 @@
 body {
      text-align: center;
 }
-/* header {
-     height: 50px;
-} */
+
 div.form {
      display: inline-block;
 }
@@ -21,7 +19,7 @@ div.form {
      font-size: 50px;
 }
 
-.navbar-footer{
+.navbar-footer {
      float: left;
      padding: 15px;
      text-align: center;
@@ -34,21 +32,17 @@ form {
      margin-bottom: 20px;
 }
 
-<<<<<<< HEAD
-#msgid.error {
+#msg.error {
      color: #e6252c;
      font-size: 20px;
-=======
-#msg.error {
-  color: #e6252c;
->>>>>>> 0e88d279f12c4267c12be27e33f9186939cdf3d8
+     text-align: center;
 }
 
 h1 {
      font-weight: bold;
 }
 ul {
-     border: 1px solid gray;
+     border: 1px solid #80808029;
 }
 img {
      float: right;
@@ -58,20 +52,13 @@ img {
      border: 1px solid gray;
 }
 
-.paraContainer {
-     display: flex;
-}
-
 .city {
      background-color: white;
      border-width: thin;
-     border-color: #80808052;
+
+     border-color: #80808014;
 }
 p {
      text-align: left;
      padding-left: 20px;
 }
-.summary {
-     margin-bottom: 100px;
-}
-
