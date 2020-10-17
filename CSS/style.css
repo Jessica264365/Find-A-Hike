@@ -1,24 +1,25 @@
 body {
-  text-align: center;
-}
-div.form {
-  display: inline-block;
-}
-.navbar-header {
-  float: left;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 50px;
-}
-.navbar-brand {
-  float: none;
-  text-align: center;
-  font-size: 50px;
+     text-align: center;
 }
 
-.navbar-footer{
+div.form {
+     display: inline-block;
+}
+.navbar-header {
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 50px;
+}
+.navbar-brand {
+     float: none;
+     text-align: center;
+     font-size: 50px;
+}
+
+.navbar-footer {
      float: left;
      padding: 15px;
      text-align: center;
@@ -28,16 +29,36 @@ div.form {
 }
 
 form {
-  margin-bottom: 20px;
+     margin-bottom: 20px;
 }
 
 #msg.error {
-  color: #e6252c;
-}
-/* .col-xs-12.col-md-12.col-xs-12 {
-     border: 1px solid lightgray;
-} */
-h1 {
-  font-weight: bold;
+     color: #e6252c;
+     font-size: 20px;
+     text-align: center;
 }
 
+h1 {
+     font-weight: bold;
+}
+ul {
+     border: 1px solid #80808029;
+}
+img {
+     float: right;
+     padding-right: 20px;
+}
+.result {
+     border: 1px solid gray;
+}
+
+.city {
+     background-color: white;
+     border-width: thin;
+
+     border-color: #80808014;
+}
+p {
+     text-align: left;
+     padding-left: 20px;
+}
