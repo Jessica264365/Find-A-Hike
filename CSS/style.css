@@ -56,9 +56,8 @@ img {
      background-color: white;
      border-width: thin;
 
-     border-color: #80808014;
+
+p{
+  font-weight:bold;
 }
-p {
-     text-align: left;
-     padding-left: 20px;
-}
+
