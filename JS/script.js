@@ -16,9 +16,7 @@ submitBtn.on("click", function (event) {
   event.preventDefault();
   let userInputLocation = $("#citySearch").val();
 
-  
-
-//save city name  in array
+  //save city name  in array
   saveCityToList(userInputLocation);
 
   let locationQueryURL =
@@ -100,6 +98,21 @@ submitBtn.on("click", function (event) {
         newRow.append(thirdColumn);
 
         displayResults.append(newRow);
+
+        saveAsFav.on("click", function () {
+          let favorites = {
+            name: hikeName,
+            summary: hikeSummary,
+            length: hikeLength,
+            image: hikeImg,
+          };
+          let savedFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+          savedFavorites.push(favorites);
+          localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+          console.log(savedFavorites);
+
+        });
       }
     });
   });
@@ -107,77 +120,63 @@ submitBtn.on("click", function (event) {
 
 //function to clear the input text box
 
-clearButtonEL.on("click",function(){
+clearButtonEL.on("click", function () {
   console.log("function called");
   $("#citySearch").val("");
-
 });
 
 //function to display error message when user trying to click on submit button without
 // entering city name in input box
-function displayMessage(type,message)
-{
-    messageEL.text(message);
-    messageEL.attr("class",type);
-
+function displayMessage(type, message) {
+  messageEL.text(message);
+  messageEL.attr("class", type);
 }
 
-
 //function will be called after user enter city name and click on submit button to save city in array
-function saveCityToList(cityName)
-{
+function saveCityToList(cityName) {
   //if user trying to click submit button without entering city name,then page displays error message
-  if(cityName === "")
-  {
-      displayMessage("error","please enter city name");     
+  if (cityName === "") {
+    displayMessage("error", "please enter city name");
   }
-  
-  if(cityName != "")
-  {
+
+  if (cityName != "") {
     messageEL.addClass("hide");
-  cityList.push(cityName);
-  messageEL.addClass("hide");
-  localStorage.setItem("searchCities",JSON.stringify(cityList));
-  
-  // render cities
-  renderCities();
+    cityList.push(cityName);
+    messageEL.addClass("hide");
+    localStorage.setItem("searchCities", JSON.stringify(cityList));
+
+    // render cities
+    renderCities();
   }
-
-
 }
 
 // function to display cities
-function renderCities(){
+function renderCities() {
   listEL.empty();
   console.log("render function called");
 
-if(JSON.parse(localStorage.getItem("searchCities")))
-{
-//looping thru the city array to display each city
-for(var i=0;i<cityList.length;i++)
-{
-  var button = $("<button>");
-  button.addClass("city")
-  button.attr("data-name",cityList[i]);
-button.text(cityList[i]);
-console.log("city added")
-listEL.append(button);
-}
-}
-
+  if (JSON.parse(localStorage.getItem("searchCities"))) {
+    //looping thru the city array to display each city
+    for (var i = 0; i < cityList.length; i++) {
+      var button = $("<button>");
+      button.addClass("city");
+      button.attr("data-name", cityList[i]);
+      button.text(cityList[i]);
+      console.log("city added");
+      listEL.append(button);
+    }
+  }
 }
 
 // function to append the city name in input text box
-function appendCityToInputText()
-{
+function appendCityToInputText() {
   let city = $(this).attr("data-name");
   console.log(city);
   $("#citySearch").val(city);
-
 }
 
 //when user click on one of the city names in list ,appendCityToInputText function will be called
-$(document).on("click",".city",appendCityToInputText)
+$(document).on("click", ".city", appendCityToInputText);
 
 // render cities
 renderCities();
