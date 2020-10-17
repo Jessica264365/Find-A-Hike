@@ -49,15 +49,15 @@ submitBtn.on("click", function (event) {
         let newRow = $("<div>");
         newRow.addClass("row");
         newRow.attr("style", "padding: 20px");
-        let firstColumn = $("<p>");
-        firstColumn.addClass("col-xs-3 col-md-3");
+        let firstColumn = $("<div>");
+        firstColumn.addClass("col s3");
         // let newDiv = $("<div>");
-        let secondColumn = $("<p>");
-        secondColumn.addClass("col-xs-6 col-md-6");
+        let secondColumn = $("<div>");
+        secondColumn.addClass("col s6");
         let hikeNameDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
         let thirdColumn = $("<div>");
-        thirdColumn.addClass("col-xs-3 col-md-3");
+        thirdColumn.addClass("col s3");
         let hikeImgDiv = $("<div>");
         let hikeSummaryDiv = $("<div>");
         let saveAsFav = $("<button>");
@@ -90,6 +90,19 @@ submitBtn.on("click", function (event) {
         newRow.append(thirdColumn);
 
         displayResults.append(newRow);
+        saveAsFav.on("click", function () {
+          let favorites = {
+            name: hikeName,
+            summary: hikeSummary,
+            length: hikeLength,
+            image: hikeImg,
+          };
+          let savedFavorites =
+            JSON.parse(localStorage.getItem("favorites")) || [];
+          savedFavorites.push(favorites);
+          localStorage.setItem("favorites", JSON.stringify(savedFavorites));
+          console.log(savedFavorites);
+        });
       }
     });
   });
