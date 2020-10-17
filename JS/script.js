@@ -25,18 +25,18 @@ submitBtn.on("click", function (event) {
           userInputLocation +
           locationAPIKey;
 
-     console.log(userInputLocation);
+     // console.log(userInputLocation);
 
      $.ajax({
           url: locationQueryURL,
           method: "GET",
      }).then(function (response) {
-          console.log(response);
+          // console.log(response);
           let latitude = response.results[0].geometry.location.lat;
           let longitude = response.results[0].geometry.location.lng;
 
-          console.log(latitude);
-          console.log(longitude);
+          // console.log(latitude);
+          // console.log(longitude);
           let hikingTrailAPIKey = "200940861-fc81625f642955d6ab06a498327fb786";
 
           let hikingTrailsURL =
@@ -51,7 +51,7 @@ submitBtn.on("click", function (event) {
                url: hikingTrailsURL,
                method: "GET",
           }).then(function (response) {
-               console.log(response);
+               // console.log(response);
                // displayResults.text(JSON.stringify(response));
 
                for (let i = 0; i < response.trails.length; i++) {
@@ -121,7 +121,7 @@ function saveCityToList(cityName) {
      if (cityName != "") {
           if (cityList.length > 2) {
                clearStorage();
-               console.log("clearstorage");
+               // console.log("clearstorage");
           }
           messageEL.addClass("hide");
           cityList.push(cityName);
@@ -135,14 +135,18 @@ function saveCityToList(cityName) {
 
 // clear the local storage
 function clearStorage() {
-     localStorage.clear();
-     cityList = [];
+     var items = JSON.parse(localStorage.getItem("searchCities"));
+     console.log(items);
+     items.splice(0, 1);
+     console.log(items);
+     localStorage.setItem("searchCities", JSON.stringify(items));
+     cityList = JSON.parse(localStorage.getItem("searchCities"));
 }
 
 // function to display cities
 function renderCities() {
      listEL.empty();
-     console.log("render function called");
+     // console.log("render function called");
 
      if (JSON.parse(localStorage.getItem("searchCities"))) {
           //looping thru the city array to display each city
@@ -151,7 +155,7 @@ function renderCities() {
                button.addClass("city");
                button.attr("data-name", cityList[i]);
                button.text(cityList[i]);
-               console.log("city added");
+               // console.log("city added");
                listEL.append(button);
           }
      }
@@ -160,7 +164,7 @@ function renderCities() {
 // function to append the city name in input text box
 function appendCityToInputText() {
      let city = $(this).attr("data-name");
-     console.log(city);
+     // console.log(city);
      $("#citySearch").val(city);
 }
 
