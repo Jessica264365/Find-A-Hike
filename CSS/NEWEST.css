@@ -1,6 +1,15 @@
 body {
     text-align: center;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* background: center / contain no-repeat url("hikingBackground.jpg"); */
+            /* #eee 35% url("hikingBackground.jpg"); */
+    background-image: url("../hikingBackground.jpg");
   }
+  main {
+    flex: 1 0 auto;
+}
   div.form {
     display: inline-block;
   }
@@ -44,5 +53,7 @@ body {
   p{
     font-weight:bold;
   }
+
+
   
   
