@@ -1,26 +1,16 @@
-var messageEL = $("#msg");
-
+// var messageEL = $("#msg");
+//retrieve cities from local storage
+var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
 var listEL = $(".list-group");
-
-var clearButtonEL = $("#clearButton");
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
 let submitBtn = $("#submitButton");
 let displayResults = $("#displayResult");
 
-//retrieve cities from local storage
-var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
-
 submitBtn.on("click", function (event) {
   event.preventDefault();
   let userInputLocation = $("#citySearch").val();
-
-  
-
-//save city name  in array
-  saveCityToList(userInputLocation);
-
   let locationQueryURL =
     "https://maps.googleapis.com/maps/api/geocode/json?address=" +
     userInputLocation +
@@ -59,15 +49,15 @@ submitBtn.on("click", function (event) {
         let newRow = $("<div>");
         newRow.addClass("row");
         newRow.attr("style", "padding: 20px");
-        let firstColumn = $("<p>");
-        firstColumn.addClass("col-xs-3 col-md-3");
+        let firstColumn = $("<div>");
+        firstColumn.addClass("col s3");
         // let newDiv = $("<div>");
-        let secondColumn = $("<p>");
-        secondColumn.addClass("col-xs-6 col-md-6");
+        let secondColumn = $("<div>");
+        secondColumn.addClass("col s6");
         let hikeNameDiv = $("<div>");
         let hikeLengthDiv = $("<div>");
         let thirdColumn = $("<div>");
-        thirdColumn.addClass("col-xs-3 col-md-3");
+        thirdColumn.addClass("col s3");
         let hikeImgDiv = $("<div>");
         let hikeSummaryDiv = $("<div>");
         let saveAsFav = $("<button>");
@@ -105,79 +95,54 @@ submitBtn.on("click", function (event) {
   });
 });
 
-//function to clear the input text box
+// //function to display error message when user click on submit button without
+// // entering city in input box
+// function displayMessage(type,message)
+// {
+//     messageEL.text(message);
+//     messageEL.attr("class",type);
 
-clearButtonEL.on("click",function(){
-  console.log("function called");
-  $("#citySearch").val("");
+// }
 
-});
+// // function to display cities
+// function renderCities(){
+//   listEL.empty();
+//   console.log("render function called");
 
-//function to display error message when user trying to click on submit button without
-// entering city name in input box
-function displayMessage(type,message)
-{
-    messageEL.text(message);
-    messageEL.attr("class",type);
+// if(JSON.parse(localStorage.getItem("searchCities")))
+// {
+// //looping thru the city array to display each city
+// for(var i=0;i<cityList.length;i++)
+// {
+//   var button = $("<button>");
+//   button.addClass("city")
+//   button.attr("data-name",cityList[i]);
+// button.text(cityList[i]);
+// console.log("city added")
+// listEL.append(button);
+// }
+// }
 
-}
+// }
 
+// // submit button click event
+// submitBtn.on("click",function(event){
+//   console.log("button clicked");
+//   event.preventDefault();
+//   var city = inputEL.val().trim();
+//   if(city === "")
+//   {
+//       displayMessage("error","please enter city name");
+//   }
 
-//function will be called after user enter city name and click on submit button to save city in array
-function saveCityToList(cityName)
-{
-  //if user trying to click submit button without entering city name,then page displays error message
-  if(cityName === "")
-  {
-      displayMessage("error","please enter city name");     
-  }
-  
-  if(cityName != "")
-  {
-    messageEL.addClass("hide");
-  cityList.push(cityName);
-  messageEL.addClass("hide");
-  localStorage.setItem("searchCities",JSON.stringify(cityList));
-  
-  // render cities
-  renderCities();
-  }
+//   if(city != "")
+//   {
+//   cityList.push(city);
+//   messageEL.addClass("hide");
+//   localStorage.setItem("searchCities",JSON.stringify(cityList));
 
-
-}
-
-// function to display cities
-function renderCities(){
-  listEL.empty();
-  console.log("render function called");
-
-if(JSON.parse(localStorage.getItem("searchCities")))
-{
-//looping thru the city array to display each city
-for(var i=0;i<cityList.length;i++)
-{
-  var button = $("<button>");
-  button.addClass("city")
-  button.attr("data-name",cityList[i]);
-button.text(cityList[i]);
-console.log("city added")
-listEL.append(button);
-}
-}
-
-}
-
-// function to append the city name in input text box
-function appendCityToInputText()
-{
-  let city = $(this).attr("data-name");
-  console.log(city);
-  $("#citySearch").val(city);
-
-}
-
-//when user click on one of the city names in list ,appendCityToInputText function will be called
-$(document).on("click",".city",appendCityToInputText)
-
-// render cities
-renderCities();
+//   inputEL.val("");
+//   renderCities();
+//   }
+// });
+// renderCities();

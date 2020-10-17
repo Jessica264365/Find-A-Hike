@@ -1,0 +1,63 @@
+body {
+     text-align: center;
+}
+
+div.form {
+     display: inline-block;
+}
+.navbar-header {
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 50px;
+}
+.navbar-brand {
+     float: none;
+     text-align: center;
+     font-size: 50px;
+}
+
+.navbar-footer {
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 25px;
+}
+
+form {
+     margin-bottom: 20px;
+}
+
+#msg.error {
+     color: #e6252c;
+     font-size: 20px;
+     text-align: center;
+}
+
+h1 {
+     font-weight: bold;
+}
+ul {
+     border: 1px solid #80808029;
+}
+img {
+     float: right;
+     padding-right: 20px;
+}
+.result {
+     border: 1px solid gray;
+}
+
+.city {
+     background-color: white;
+     border-width: thin;
+
+
+p{
+  font-weight:bold;
+}
+
