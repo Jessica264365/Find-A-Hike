@@ -6,6 +6,7 @@ body {
     /* background: center / contain no-repeat url("hikingBackground.jpg"); */
             /* #eee 35% url("hikingBackground.jpg"); */
     background-image: url("../hikingBackground.jpg");
+    background-repeat: no-repeat;
   }
   main {
     flex: 1 0 auto;
