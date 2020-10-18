@@ -1,6 +1,10 @@
-// var messageEL = $("#msg");
+var messageEL = $("#msg");
+
+var listEL = $(".list-group");
+
 //retrieve cities from local storage
 var cityList = JSON.parse(localStorage.getItem("searchCities")) || [];
+
 var listEL = $(".list-group");
 
 let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
@@ -9,214 +13,235 @@ let submitBtn = $("#submitButton");
 let displayResults = $("#displayResult");
 let displayFavorites = $("#displayFavorites");
 
-
 submitBtn.on("click", function (event) {
-  event.preventDefault();
-  let userInputLocation = $("#citySearch").val();
-  let locationQueryURL =
-    "https://maps.googleapis.com/maps/api/geocode/json?address=" +
-    userInputLocation +
-    locationAPIKey;
+     event.preventDefault();
+     let userInputLocation = $("#citySearch").val();
 
-  console.log(userInputLocation);
+     //save city name  in array
+     saveCityToList(userInputLocation);
 
-  $.ajax({
-    url: locationQueryURL,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    let latitude = response.results[0].geometry.location.lat;
-    let longitude = response.results[0].geometry.location.lng;
+     //clear the input text box
+     $("#citySearch").val("");
 
-    console.log(latitude);
-    console.log(longitude);
-    let hikingTrailAPIKey = "200940861-fc81625f642955d6ab06a498327fb786";
+     let locationQueryURL =
+          "https://maps.googleapis.com/maps/api/geocode/json?address=" +
+          userInputLocation +
+          locationAPIKey;
 
-    let hikingTrailsURL =
-      "https://www.hikingproject.com/data/get-trails?lat=" +
-      latitude +
-      "&lon=" +
-      longitude +
-      "&maxDistance=10&key=" +
-      hikingTrailAPIKey;
+     console.log(userInputLocation);
 
-    $.ajax({
-      url: hikingTrailsURL,
-      method: "GET",
-    }).then(function (response) {
-      console.log(response);
-      // displayResults.text(JSON.stringify(response));
+     $.ajax({
+          url: locationQueryURL,
+          method: "GET",
+     }).then(function (response) {
+          console.log(response);
+          let latitude = response.results[0].geometry.location.lat;
+          let longitude = response.results[0].geometry.location.lng;
 
-      for (let i = 0; i < response.trails.length; i++) {
-        let newRow = $("<div>");
-        newRow.addClass("row");
-        newRow.attr("style", "padding: 20px");
-        let firstColumn = $("<div>");
-        firstColumn.addClass("col s3");
-        // let newDiv = $("<div>");
-        let secondColumn = $("<div>");
-        secondColumn.addClass("col s6");
-        let hikeNameDiv = $("<div>");
-        let hikeLengthDiv = $("<div>");
-        let thirdColumn = $("<div>");
-        thirdColumn.addClass("col s3");
-        let hikeImgDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
-        let saveAsFav = $("<button>");
-        saveAsFav.text("Add to Favorites");
+          console.log(latitude);
+          console.log(longitude);
+          let hikingTrailAPIKey = "200940861-fc81625f642955d6ab06a498327fb786";
 
-        let hikeName = response.trails[i].name;
-        let hikeSummary = response.trails[i].summary;
-        let hikeLength = response.trails[i].length;
-        let hikeImg = response.trails[i].imgMedium;
-        // console.log(response.trails[0].name);
+          let hikingTrailsURL =
+               "https://www.hikingproject.com/data/get-trails?lat=" +
+               latitude +
+               "&lon=" +
+               longitude +
+               "&maxDistance=10&key=" +
+               hikingTrailAPIKey;
 
-        hikeNameDiv.append(hikeName);
-        hikeSummaryDiv.append(hikeSummary);
-        hikeLengthDiv.append(hikeLength);
-        let image = $("<img>");
-        image.attr("style", "max-height: 100px");
-        image.attr("style", "max-width: 100px");
+          $.ajax({
+               url: hikingTrailsURL,
+               method: "GET",
+          }).then(function (response) {
+               console.log(response);
+               // displayResults.text(JSON.stringify(response));
 
-        image.attr("src", hikeImg);
-        hikeImgDiv.append(image);
+               for (let i = 0; i < response.trails.length; i++) {
+                    let newRow = $("<div>");
+                    newRow.addClass("row");
+                    newRow.attr("style", "padding: 20px");
+                    let firstColumn = $("<div>");
+                    firstColumn.addClass("col s3");
+                    // let newDiv = $("<div>");
+                    let secondColumn = $("<div>");
+                    secondColumn.addClass("col s6");
+                    let hikeNameDiv = $("<div>");
+                    let hikeLengthDiv = $("<div>");
+                    let thirdColumn = $("<div>");
+                    thirdColumn.addClass("col s3");
+                    let hikeImgDiv = $("<div>");
+                    let hikeSummaryDiv = $("<div>");
+                    let saveAsFav = $("<button>");
+                    saveAsFav.text("Add to Favorites");
 
-        firstColumn.append(hikeNameDiv);
-        secondColumn.append(hikeSummaryDiv);
-        firstColumn.append(hikeLengthDiv);
-        thirdColumn.append(hikeImgDiv);
-        firstColumn.append(saveAsFav);
+                    let hikeName = response.trails[i].name;
+                    let hikeSummary = response.trails[i].summary;
+                    let hikeLength = response.trails[i].length;
+                    let hikeImg = response.trails[i].imgMedium;
+                    // console.log(response.trails[0].name);
 
-        newRow.append(firstColumn);
-        newRow.append(secondColumn);
-        newRow.append(thirdColumn);
+                    hikeNameDiv.append(hikeName);
+                    hikeSummaryDiv.append(hikeSummary);
+                    hikeLengthDiv.append(hikeLength);
+                    let image = $("<img>");
+                    image.attr("style", "max-height: 100px");
+                    image.attr("style", "max-width: 100px");
 
-        displayResults.append(newRow);
-        saveAsFav.on("click", function () {
-          let favorites = {
-            name: hikeName,
-            summary: hikeSummary,
-            length: hikeLength,
-            image: hikeImg,
-          };
-          let savedFavorites =
-            JSON.parse(localStorage.getItem("favorites")) || [];
-          savedFavorites.push(favorites);
-          localStorage.setItem("favorites", JSON.stringify(savedFavorites));
-          console.log(savedFavorites);
-        });
-      }
-      function displayFavorites() {
-        let savedFavorites =
-            JSON.parse(localStorage.getItem("favorites")) || [];
-        for (let i = 0; i < savedFavorites.length; i++) {
-          let newRow = $("<div>");
-        newRow.addClass("row");
-        newRow.attr("style", "padding: 20px");
-        let firstColumn = $("<div>");
-        firstColumn.addClass("col s3");
-        // let newDiv = $("<div>");
-        let secondColumn = $("<div>");
-        secondColumn.addClass("col s6");
-        let hikeNameDiv = $("<div>");
-        let hikeLengthDiv = $("<div>");
-        let thirdColumn = $("<div>");
-        thirdColumn.addClass("col s3");
-        let hikeImgDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
-     
+                    image.attr("src", hikeImg);
+                    hikeImgDiv.append(image);
 
-        let hikeName = name;
-        let hikeSummary = response.trails[i].summary;
-        let hikeLength = response.trails[i].length;
-        let hikeImg = response.trails[i].imgMedium;
-        console.log(hikeName); 
+                    firstColumn.append(hikeNameDiv);
+                    secondColumn.append(hikeSummaryDiv);
+                    firstColumn.append(hikeLengthDiv);
+                    thirdColumn.append(hikeImgDiv);
+                    firstColumn.append(saveAsFav);
 
-        hikeNameDiv.append(hikeName);
-        hikeSummaryDiv.append(hikeSummary);
-        hikeLengthDiv.append(hikeLength);
-        let image = $("<img>");
-        image.attr("style", "max-height: 100px");
-        image.attr("style", "max-width: 100px");
+                    newRow.append(firstColumn);
+                    newRow.append(secondColumn);
+                    newRow.append(thirdColumn);
 
-        image.attr("src", hikeImg);
-        hikeImgDiv.append(image);
+                    displayResults.append(newRow);
+                    saveAsFav.on("click", function () {
+                         let favorites = {
+                              name: hikeName,
+                              summary: hikeSummary,
+                              length: hikeLength,
+                              image: hikeImg,
+                         };
+                         let savedFavorites =
+                              JSON.parse(localStorage.getItem("favorites")) ||
+                              [];
+                         savedFavorites.push(favorites);
+                         localStorage.setItem(
+                              "favorites",
+                              JSON.stringify(savedFavorites)
+                         );
+                         console.log(savedFavorites);
+                    });
+               }
+               function displayFavorites() {
+                    let savedFavorites =
+                         JSON.parse(localStorage.getItem("favorites")) || [];
+                    for (let i = 0; i < savedFavorites.length; i++) {
+                         let newRow = $("<div>");
+                         newRow.addClass("row");
+                         newRow.attr("style", "padding: 20px");
+                         let firstColumn = $("<div>");
+                         firstColumn.addClass("col s3");
+                         // let newDiv = $("<div>");
+                         let secondColumn = $("<div>");
+                         secondColumn.addClass("col s6");
+                         let hikeNameDiv = $("<div>");
+                         let hikeLengthDiv = $("<div>");
+                         let thirdColumn = $("<div>");
+                         thirdColumn.addClass("col s3");
+                         let hikeImgDiv = $("<div>");
+                         let hikeSummaryDiv = $("<div>");
 
-        console.log(savedFavorites);
+                         let hikeName = name;
+                         let hikeSummary = response.trails[i].summary;
+                         let hikeLength = response.trails[i].length;
+                         let hikeImg = response.trails[i].imgMedium;
+                         console.log(hikeName);
 
-        firstColumn.append(hikeNameDiv);
-        secondColumn.append(hikeSummaryDiv);
-        firstColumn.append(hikeLengthDiv);
-        thirdColumn.append(hikeImgDiv);
-        
+                         hikeNameDiv.append(hikeName);
+                         hikeSummaryDiv.append(hikeSummary);
+                         hikeLengthDiv.append(hikeLength);
+                         let image = $("<img>");
+                         image.attr("style", "max-height: 100px");
+                         image.attr("style", "max-width: 100px");
 
-        newRow.append(firstColumn);
-        newRow.append(secondColumn);
-        newRow.append(thirdColumn);
+                         image.attr("src", hikeImg);
+                         hikeImgDiv.append(image);
 
-        displayFavorites.append(newRow);
-        }
-      }
-      let favoritesButton = $(".switch");
-      favoritesButton.on("click", function(){
-        displayResults.addClass("hide");
-        displayFavorites();
-        
-      } )
+                         console.log(savedFavorites);
 
-    });
+                         firstColumn.append(hikeNameDiv);
+                         secondColumn.append(hikeSummaryDiv);
+                         firstColumn.append(hikeLengthDiv);
+                         thirdColumn.append(hikeImgDiv);
 
-  });
+                         newRow.append(firstColumn);
+                         newRow.append(secondColumn);
+                         newRow.append(thirdColumn);
+
+                         displayFavorites.append(newRow);
+                    }
+               }
+               let favoritesButton = $(".switch");
+               favoritesButton.on("click", function () {
+                    displayResults.addClass("hide");
+                    displayFavorites();
+               });
+          });
+     });
 });
 
-// //function to display error message when user click on submit button without
-// // entering city in input box
-// function displayMessage(type,message)
-// {
-//     messageEL.text(message);
-//     messageEL.attr("class",type);
+//function will be called after user enter city name and click on submit button to save city in array
+function saveCityToList(cityName) {
+     //if user trying to click submit button without entering city name,then page displays error message
+     if (cityName === "") {
+          displayMessage("error", "please enter city name");
+     }
 
-// }
+     if (cityName != "") {
+          if (cityList.length > 2) {
+               rendercitiesUpToThree();
+          }
+          messageEL.addClass("hide");
+          cityList.push(cityName);
+          messageEL.addClass("hide");
+          localStorage.setItem("searchCities", JSON.stringify(cityList));
 
-// // function to display cities
-// function renderCities(){
-//   listEL.empty();
-//   console.log("render function called");
+          // render cities
+          renderCities();
+     }
+}
 
-// if(JSON.parse(localStorage.getItem("searchCities")))
-// {
-// //looping thru the city array to display each city
-// for(var i=0;i<cityList.length;i++)
-// {
-//   var button = $("<button>");
-//   button.addClass("city")
-//   button.attr("data-name",cityList[i]);
-// button.text(cityList[i]);
-// console.log("city added")
-// listEL.append(button);
-// }
-// }
+//function to display error message when user trying to click on submit button without
+// entering city name in input box
+function displayMessage(type, message) {
+     messageEL.text(message);
+     messageEL.attr("class", type);
+}
 
-// }
+// render 3  previous search cities
+function rendercitiesUpToThree() {
+     var items = JSON.parse(localStorage.getItem("searchCities"));
+     items.splice(0, 1);
+     console.log(items);
+     localStorage.setItem("searchCities", JSON.stringify(items));
+     cityList = JSON.parse(localStorage.getItem("searchCities"));
+}
 
-// // submit button click event
-// submitBtn.on("click",function(event){
-//   console.log("button clicked");
-//   event.preventDefault();
-//   var city = inputEL.val().trim();
-//   if(city === "")
-//   {
-//       displayMessage("error","please enter city name");
-//   }
+// function to display cities
+function renderCities() {
+     listEL.empty();
+     // console.log("render function called");
 
-//   if(city != "")
-//   {
-//   cityList.push(city);
-//   messageEL.addClass("hide");
-//   localStorage.setItem("searchCities",JSON.stringify(cityList));
+     if (JSON.parse(localStorage.getItem("searchCities"))) {
+          //looping thru the city array to display each city
+          for (var i = 0; i < cityList.length; i++) {
+               var button = $("<button>");
+               button.addClass("city");
+               button.attr("data-name", cityList[i]);
+               button.text(cityList[i]);
+               // console.log("city added");
+               listEL.append(button);
+          }
+     }
+}
 
-//   inputEL.val("");
-//   renderCities();
-//   }
-// });
-// renderCities();
+// function to append the city name in input text box
+function appendCityToInputText() {
+     let city = $(this).attr("data-name");
+     // console.log(city);
+     $("#citySearch").val(city);
+}
+
+//when user click on one of the city names in list ,appendCityToInputText function will be called
+$(document).on("click", ".city", appendCityToInputText);
+
+//render cities
+renderCities();
