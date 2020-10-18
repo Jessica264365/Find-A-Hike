@@ -1,59 +1,54 @@
 body {
-    text-align: center;
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    /* background: center / contain no-repeat url("hikingBackground.jpg"); */
-            /* #eee 35% url("hikingBackground.jpg"); */
-    background-image: url("../hikingBackground.jpg");
-  }
-  main {
-    flex: 1 0 auto;
+     text-align: center;
+     display: flex;
+     min-height: 100vh;
+     flex-direction: column;
+     /* background: center / contain no-repeat url("hikingBackground.jpg"); */
+     /* #eee 35% url("hikingBackground.jpg"); */
+     background-image: url("../hikingBackground.jpg");
+     background-repeat: no-repeat;
 }
-  div.form {
-    display: inline-block;
-  }
-  .navbar-header {
-    float: left;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
-    color: white;
-    font-size: 50px;
-  }
-  .navbar-brand {
-    float: none;
-    text-align: center;
-    font-size: 50px;
-  }
-  
-  .navbar-footer{
-       float: left;
-       padding: 15px;
-       text-align: center;
-       width: 100%;
-       color: white;
-       font-size: 25px;
-  }
-  
-  form {
-    margin-bottom: 20px;
-  }
-  
-  #msg.error {
-    color: #e6252c;
-  }
-  /* .col-xs-12.col-md-12.col-xs-12 {
-       border: 1px solid lightgray;
-  } */
-  h1 {
-    font-weight: bold;
-  }
-  
-  p{
-    font-weight:bold;
-  }
+main {
+     flex: 1 0 auto;
+}
+div.form {
+     display: inline-block;
+}
+.navbar-header {
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 50px;
+}
+.navbar-brand {
+     float: none;
+     text-align: center;
+     font-size: 50px;
+}
 
+.navbar-footer {
+     float: left;
+     padding: 15px;
+     text-align: center;
+     width: 100%;
+     color: white;
+     font-size: 25px;
+}
 
-  
-  
+form {
+     margin-bottom: 20px;
+}
+
+#msg.error {
+     color: #e6252c;
+}
+
+h1 {
+     font-weight: bold;
+}
+
+p {
+     font-weight: bold;
+}
