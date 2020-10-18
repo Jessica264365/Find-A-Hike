@@ -7,8 +7,7 @@ let locationAPIKey = "&key=AIzaSyArKQOrofS8pb4t-jdDf7fsqmVJHuqIQG4";
 
 let submitBtn = $("#submitButton");
 let displayResults = $("#displayResult");
-let displayFavorites = $("#displayFavorites");
-
+let displayFavoritesEl = $("#displayFavorites");
 
 submitBtn.on("click", function (event) {
   event.preventDefault();
@@ -108,64 +107,58 @@ submitBtn.on("click", function (event) {
       }
       function displayFavorites() {
         let savedFavorites =
-            JSON.parse(localStorage.getItem("favorites")) || [];
+          JSON.parse(localStorage.getItem("favorites")) || [];
         for (let i = 0; i < savedFavorites.length; i++) {
           let newRow = $("<div>");
-        newRow.addClass("row");
-        newRow.attr("style", "padding: 20px");
-        let firstColumn = $("<div>");
-        firstColumn.addClass("col s3");
-        // let newDiv = $("<div>");
-        let secondColumn = $("<div>");
-        secondColumn.addClass("col s6");
-        let hikeNameDiv = $("<div>");
-        let hikeLengthDiv = $("<div>");
-        let thirdColumn = $("<div>");
-        thirdColumn.addClass("col s3");
-        let hikeImgDiv = $("<div>");
-        let hikeSummaryDiv = $("<div>");
-     
+          newRow.addClass("row");
+          newRow.attr("style", "padding: 20px");
+          let firstColumn = $("<div>");
+          firstColumn.addClass("col s3");
+          // let newDiv = $("<div>");
+          let secondColumn = $("<div>");
+          secondColumn.addClass("col s6");
+          let hikeNameDiv = $("<div>");
+          let hikeLengthDiv = $("<div>");
+          let thirdColumn = $("<div>");
+          thirdColumn.addClass("col s3");
+          let hikeImgDiv = $("<div>");
+          let hikeSummaryDiv = $("<div>");
 
-        let hikeName = name;
-        let hikeSummary = response.trails[i].summary;
-        let hikeLength = response.trails[i].length;
-        let hikeImg = response.trails[i].imgMedium;
-        console.log(hikeName); 
+          let hikeName = response.trails[i].name;
+          let hikeSummary = response.trails[i].summary;
+          let hikeLength = response.trails[i].length;
+          let hikeImg = response.trails[i].imgMedium;
+          console.log(hikeName);
 
-        hikeNameDiv.append(hikeName);
-        hikeSummaryDiv.append(hikeSummary);
-        hikeLengthDiv.append(hikeLength);
-        let image = $("<img>");
-        image.attr("style", "max-height: 100px");
-        image.attr("style", "max-width: 100px");
+          hikeNameDiv.append(hikeName);
+          hikeSummaryDiv.append(hikeSummary);
+          hikeLengthDiv.append(hikeLength);
+          let image = $("<img>");
+          image.attr("style", "max-height: 100px");
+          image.attr("style", "max-width: 100px");
 
-        image.attr("src", hikeImg);
-        hikeImgDiv.append(image);
+          image.attr("src", hikeImg);
+          hikeImgDiv.append(image);
 
-        console.log(savedFavorites);
+          console.log(savedFavorites);
 
-        firstColumn.append(hikeNameDiv);
-        secondColumn.append(hikeSummaryDiv);
-        firstColumn.append(hikeLengthDiv);
-        thirdColumn.append(hikeImgDiv);
-        
+          firstColumn.append(hikeNameDiv);
+          secondColumn.append(hikeSummaryDiv);
+          firstColumn.append(hikeLengthDiv);
+          thirdColumn.append(hikeImgDiv);
 
-        newRow.append(firstColumn);
-        newRow.append(secondColumn);
-        newRow.append(thirdColumn);
+          newRow.append(firstColumn);
+          newRow.append(secondColumn);
+          newRow.append(thirdColumn);
 
-        displayFavorites.append(newRow);
+          displayFavoritesEl.append(newRow);
         }
       }
       let favoritesButton = $(".switch");
-      favoritesButton.on("click", function(){
+      favoritesButton.on("click", function () {
         displayResults.addClass("hide");
         displayFavorites();
-        
-      } )
-
+      });
     });
-
   });
 });
-
