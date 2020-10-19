@@ -136,7 +136,7 @@ submitBtn.on("click", function (event) {
           let hikeSummaryDiv = $("<div>");
 
           let hikeName = name;
-          let hikeSummary = response.trails[i].summary;
+          let hikeSummary = summary;
           let hikeLength = response.trails[i].length;
           let hikeImg = response.trails[i].imgMedium;
           console.log(hikeName);
@@ -162,7 +162,7 @@ submitBtn.on("click", function (event) {
           newRow.append(secondColumn);
           newRow.append(thirdColumn);
 
-          displayFavorites.append(newRow);
+          displayFavoritesEl.append(newRow);
         }
       }
       let favoritesButton = $(".switch");
