@@ -129,7 +129,21 @@ function renderCurrentCityResult(results) {
                };
                console.log(favorites);
 
-               savedFavorites.push(favorites);
+               if (localStorage.getItem("favorites") === null) {
+                    savedFavorites.push(favorites);
+                    localStorage.setItem(
+                         "favorites",
+                         JSON.stringify(savedFavorites)
+                    );
+               } else {
+                    savedFavorites = JSON.parse(
+                         localStorage.getItem("favorites")
+                    );
+                    if (!checkHikename(hikeName)) {
+                         savedFavorites.push(favorites);
+                    }
+               }
+
                localStorage.setItem(
                     "favorites",
                     JSON.stringify(savedFavorites)
@@ -137,6 +151,19 @@ function renderCurrentCityResult(results) {
                console.log(savedFavorites);
           });
      }
+}
+
+// function check hikeName is existing or not
+
+function checkHikename(name) {
+     savedFavorites = JSON.parse(localStorage.getItem("favorites"));
+     for (var i = 0; i < savedFavorites.length; i++) {
+          if (savedFavorites[i].name === name) {
+               return true;
+          }
+     }
+
+     return false;
 }
 
 //
