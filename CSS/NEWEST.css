@@ -10,14 +10,17 @@ body {
   background-attachment: fixed;
   font-weight: 900;
   background-blend-mode: lighten;
-  font-size: 18px;
-}
-#displayResult {
-  background: rgba(255, 255, 255, 1);
-}
-div.transbox {
-  background: rgba(255, 255, 255, 1);
-  /* background-color: #FFFFFF;
+  font-size:18px;
+  }
+  #displayResult{
+    background: rgba(255, 255, 255, 1);
+  }
+  #displayFavorites{
+    background: rgba(255, 255, 255, 1);
+  }
+  div.transbox {
+    background: rgba(255, 255, 255, 1);
+    /* background-color: #FFFFFF;
     opacity: 0.6; */
 }
 .ontop {
