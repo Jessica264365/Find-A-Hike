@@ -59,9 +59,6 @@ submitBtn.on("click", function (event) {
                console.log(response);
                var results = response.trails;
                console.log(results);
-               console.log(response);
-               var results = response.trails;
-               console.log(results);
 
                renderCurrentCityResult(results);
           });
@@ -71,6 +68,7 @@ submitBtn.on("click", function (event) {
 // function currentcity results
 
 function renderCurrentCityResult(results) {
+     // displayResults.remove("hide");
      displayResults.empty();
      console.log("functioncalled");
      displayFavorites.addClass("hide");
@@ -100,8 +98,7 @@ function renderCurrentCityResult(results) {
           console.log(hikeName);
           hikeNameDiv.append(hikeName);
           hikeSummaryDiv.append(hikeSummary);
-          hikeLengthDiv.text("Length of trail is:  " + hikeLength);
-
+          hikeLengthDiv.append(hikeLength);
           let image = $("<img>");
           image.attr("style", "max-height: 100px");
           image.attr("style", "max-width: 100px");
@@ -123,12 +120,16 @@ function renderCurrentCityResult(results) {
           saveAsFav.on("click", function () {
                let favorites = {
                     name: hikeName,
+
                     summary: hikeSummary,
                     length: hikeLength,
-                    image: hikeImg,
+
+                    image: image.attr("src"),
                };
                console.log(favorites);
-
+               // let savedFavorites =
+               //      JSON.parse(localStorage.getItem("favorites")) ||
+               //      [];
                savedFavorites.push(favorites);
                localStorage.setItem(
                     "favorites",
@@ -151,15 +152,15 @@ favoritesButton.on("click", function () {
 function displayFavoritesResult() {
      displayResults.addClass("hide");
      displayFavorites.removeClass("hide");
-     displayFavorites.empty();
      console.log("function called");
-     savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
+     let savedFavorites = JSON.parse(localStorage.getItem("favorites")) || [];
      for (let i = 0; i < savedFavorites.length; i++) {
           let newRow = $("<div>");
           newRow.addClass("row");
           newRow.attr("style", "padding: 20px");
           let firstColumn = $("<div>");
           firstColumn.addClass("col s3");
+          // let newDiv = $("<div>");
           let secondColumn = $("<div>");
           secondColumn.addClass("col s6");
           let hikeNameDiv = $("<div>");
@@ -168,24 +169,23 @@ function displayFavoritesResult() {
           thirdColumn.addClass("col s3");
           let hikeImgDiv = $("<div>");
           let hikeSummaryDiv = $("<div>");
-          let deleteFromFav = $("<button>");
-          deleteFromFav.text("Delete From Favorites");
 
-          let hikeName = savedFavorites[i].name;
+          let hikeName = name;
           let hikeSummary = savedFavorites[i].summary;
           let hikeLength = savedFavorites[i].length;
-          let hikeImg = savedFavorites[i].image;
+          let hikeImg = savedFavorites[i].imgMedium;
           console.log(hikeName);
 
           hikeNameDiv.append(hikeName);
           hikeSummaryDiv.append(hikeSummary);
-          hikeLengthDiv.text("Length of trail is:  " + hikeLength);
-
+          hikeLengthDiv.append(hikeLength);
           let image = $("<img>");
           image.attr("style", "max-height: 100px");
           image.attr("style", "max-width: 100px");
 
           image.attr("src", hikeImg);
+          image.attr("style", "height:100");
+          image.attr("style", "width:100");
           hikeImgDiv.append(image);
 
           console.log(savedFavorites);
@@ -193,7 +193,6 @@ function displayFavoritesResult() {
           firstColumn.append(hikeNameDiv);
           secondColumn.append(hikeSummaryDiv);
           firstColumn.append(hikeLengthDiv);
-          firstColumn.append(deleteFromFav);
           thirdColumn.append(hikeImgDiv);
 
           newRow.append(firstColumn);
@@ -201,26 +200,13 @@ function displayFavoritesResult() {
           newRow.append(thirdColumn);
 
           displayFavorites.append(newRow);
-
-          deleteFromFav.on("click", function () {
-               console.log(hikeName);
-               savedFavorites =
-                    JSON.parse(localStorage.getItem("favorites")) || [];
-               for (var i = 0; i < savedFavorites.length; i++) {
-                    if (savedFavorites[i].name === hikeName) {
-                         savedFavorites.splice(i, 1);
-                         newRow.empty();
-                    }
-               }
-
-               localStorage.setItem(
-                    "favorites",
-                    JSON.stringify(savedFavorites)
-               );
-               savedFavorites = JSON.parse(localStorage.getItem("favorites"));
-          });
      }
 }
+// let favoritesButton = $(".switch");
+// favoritesButton.on("click", function () {
+// displayResults.addClass("hide");
+// displayFavorites();
+// });
 
 //function will be called after user enter city name and click on submit button to save city in array
 function saveCityToList(cityName) {
