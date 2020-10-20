@@ -6,7 +6,7 @@ body {
   flex-direction: column;
   /* background: center / contain no-repeat url("hikingBackground.jpg"); */
           /* #eee 35% url("hikingBackground.jpg"); */
-  background-image: url("../pexels-nick-bondarev-4618597.jpg");
+  background-image: url("../background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-weight: 900;
