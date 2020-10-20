@@ -141,10 +141,6 @@ function renderCurrentCityResult(results) {
                     );
                     if (!checkHikename(hikeName)) {
                          savedFavorites.push(favorites);
-                    } else {
-                         alert(
-                              hikeName + " already has been added in favorites"
-                         );
                     }
                }
 
