@@ -1,31 +1,59 @@
 body {
     text-align: center;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    /* background: center / contain no-repeat url("hikingBackground.jpg"); */
+            /* #eee 35% url("hikingBackground.jpg"); */
+    background-image: url("../pexels-nick-bondarev-4618597.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-weight: 900;
+    background-blend-mode: lighten;
+    font-size:18px;
+    }
+
+    div.transbox {
+      background: rgba(255, 255, 255, 1);
+      /* background-color: #ffffff;
+      opacity: 0.6; */
+
+    }
+
+    .ontop {
+
+      font-weight: bold;
+      opacity: 1;
+
+    }
+    div.transbox img {
+      /* margin: 5%; */
+      font-weight: bold;
+      opacity: 1;
+      
+    }
+
+    .real{
+      opacity:1;
+    }
+
+    /* #displayResult{
+
+    }
+    #displayFavorite{
+      
+    } */
+  main {
+    flex: 1 0 auto;
+    font-weight: 900;
   }
   div.form {
     display: inline-block;
-  }
-  .navbar-header {
-    float: left;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
-    color: white;
-    font-size: 50px;
-  }
-  .navbar-brand {
-    float: none;
-    text-align: center;
-    font-size: 50px;
-  }
+    font-weight: 900;
+    }
+
   
-  .navbar-footer{
-       float: left;
-       padding: 15px;
-       text-align: center;
-       width: 100%;
-       color: white;
-       font-size: 25px;
-  }
+
   
   form {
     margin-bottom: 20px;
@@ -34,15 +62,15 @@ body {
   #msg.error {
     color: #e6252c;
   }
-  /* .col-xs-12.col-md-12.col-xs-12 {
-       border: 1px solid lightgray;
-  } */
+
   h1 {
-    font-weight: bold;
+    font-weight: 900;
+    
   }
   
   p{
-    font-weight:bold;
+    font-weight: 900;
+    
   }
   
   

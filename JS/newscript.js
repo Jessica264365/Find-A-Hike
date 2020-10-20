@@ -59,8 +59,10 @@ submitBtn.on("click", function (event) {
         let thirdColumn = $("<div>");
         thirdColumn.addClass("col-xs-3 col-md-3");
         let hikeImgDiv = $("<div>");
+
         let hikeSummaryDiv = $("<div>");
         let saveAsFav = $("<button>");
+        saveAsFav.addClass("btn");
         saveAsFav.text("Add to Favorites");
 
         let hikeName = response.trails[i].name;
@@ -74,7 +76,8 @@ submitBtn.on("click", function (event) {
         hikeLengthDiv.append(hikeLength);
         let image = $("<img>");
         image.attr("style", "max-height: 100px");
-        image.attr("style", "max-width: 100px");
+        image.attr("style", "max-width: 200px");
+        // image.attr("style", "opacity: 1")
 
         image.attr("src", hikeImg);
         hikeImgDiv.append(image);
