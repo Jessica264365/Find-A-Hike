@@ -16,6 +16,9 @@ body {
   #displayResult{
     background: rgba(255, 255, 255, 1);
   }
+  #displayFavorites{
+    background: rgba(255, 255, 255, 1);
+  }
   div.transbox {
     background: rgba(255, 255, 255, 1);
     /* background-color: #FFFFFF;
