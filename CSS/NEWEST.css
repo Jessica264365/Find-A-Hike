@@ -1,3 +1,4 @@
+
 body {
   text-align: center;
   display: flex;
@@ -7,51 +8,52 @@ body {
   /* #eee 35% url("hikingBackground.jpg"); */
   background-image: url("../images/background.jpg");
   background-repeat: no-repeat;
-}
+  background-attachment: fixed;
+  font-weight: 900;
+  background-blend-mode: lighten;
+  font-size:18px;
+  }
+  #displayResult{
+    background: rgba(255, 255, 255, 1);
+  }
+  div.transbox {
+    background: rgba(255, 255, 255, 1);
+    /* background-color: #FFFFFF;
+    opacity: 0.6; */
+  }
+  .ontop {
+    font-weight: bold;
+    opacity: 1;
+  }
+  div.transbox img {
+    /* margin: 5%; */
+    font-weight: bold;
+    opacity: 1;
+  }
+  .real{
+    opacity:1;
+  }
+  /* #displayResult{
+  }
+  #displayFavorite{
+  } */
 main {
   flex: 1 0 auto;
+  font-weight: 900;
 }
 div.form {
   display: inline-block;
-}
-.navbar-header {
-  float: left;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 50px;
-}
-.navbar-brand {
-  float: none;
-  text-align: center;
-  font-size: 50px;
-}
-
-.navbar-footer {
-  float: left;
-  padding: 15px;
-  text-align: center;
-  width: 100%;
-  color: white;
-  font-size: 25px;
-}
-
+  font-weight: 900;
+  }
 form {
   margin-bottom: 20px;
 }
-
 #msg.error {
-  color: #e6252c;
+  color: #E6252C;
 }
-
 h1 {
-  font-weight: bold;
+  font-weight: 900;
 }
-
-p {
-  font-weight: bold;
-}
-.hide {
-  display: none;
+p{
+  font-weight: 900;
 }
