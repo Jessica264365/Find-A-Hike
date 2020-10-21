@@ -100,7 +100,7 @@ function renderCurrentCityResult(results) {
     console.log(hikeName);
     hikeNameDiv.append(hikeName);
     hikeSummaryDiv.append(hikeSummary);
-    hikeLengthDiv.text("Length of trail is:  " + hikeLength);
+    hikeLengthDiv.text("Trail length:  " + hikeLength + " miles");
 
     let image = $("<img>");
     image.attr("style", "max-height: 100px");
