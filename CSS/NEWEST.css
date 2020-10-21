@@ -1,45 +1,37 @@
-
 body {
   text-align: center;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
-  /* background: center / contain no-repeat url("hikingBackground.jpg"); */
-          /* #eee 35% url("hikingBackground.jpg"); */
+
   background-image: url("../background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   font-weight: 900;
   background-blend-mode: lighten;
-  font-size:18px;
-  }
-  #displayResult{
-    background: rgba(255, 255, 255, 1);
-  }
-  #displayFavorites{
-    background: rgba(255, 255, 255, 1);
-  }
-  div.transbox {
-    background: rgba(255, 255, 255, 1);
-    /* background-color: #FFFFFF;
-    opacity: 0.6; */
-  }
-  .ontop {
-    font-weight: bold;
-    opacity: 1;
-  }
-  div.transbox img {
-    /* margin: 5%; */
-    font-weight: bold;
-    opacity: 1;
-  }
-  .real{
-    opacity:1;
-  }
-  /* #displayResult{
-  }
-  #displayFavorite{
-  } */
+  font-size: 18px;
+}
+#displayResult {
+  background: rgba(255, 255, 255, 1);
+}
+#displayFavorites {
+  background: rgba(255, 255, 255, 1);
+}
+div.transbox {
+  background: rgba(255, 255, 255, 1);
+}
+.ontop {
+  font-weight: bold;
+  opacity: 1;
+}
+div.transbox img {
+  font-weight: bold;
+  opacity: 1;
+}
+.real {
+  opacity: 1;
+}
+
 main {
   flex: 1 0 auto;
   font-weight: 900;
@@ -47,16 +39,16 @@ main {
 div.form {
   display: inline-block;
   font-weight: 900;
-  }
+}
 form {
   margin-bottom: 20px;
 }
 #msg.error {
-  color: #E6252C;
+  color: #e6252c;
 }
 h1 {
   font-weight: 900;
 }
-p{
+p {
   font-weight: 900;
 }
