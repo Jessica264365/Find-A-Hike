@@ -1,21 +1,21 @@
 # Project 1: Hike Locator
 
-- View the GitHub [repository](https://github.com/Jessica264365/Project-1)
+- View the GitHub [repository](https://github.com/Jessica264365/Find-A-Hike)
 - View the live [website](https://jessica264365.github.io/Find-A-Hike/)
 
 ## Table of Contents
 
-- [About the Project](https://github.com/Jessica264365/Project-1#about-the-project)
-  - [Built With](https://github.com/Jessica264365/Project-1#built-with)
+- [About the Project](https://github.com/Jessica264365/Find-A-Hike#about-the-project)
+  - [Built With](https://github.com/Jessica264365/Find-A-Hike#built-with)
 
-* [Start Your Own](https://github.com/Jessica264365/Project-1#start-your-own)
-  - [Prerequisites](https://github.com/Jessica264365/Project-1#prerequisites)
-  - [Installation](https://github.com/Jessica264365/Project-1#installation)
+* [Start Your Own](https://github.com/Jessica264365/Find-A-Hike#start-your-own)
+  - [Prerequisites](https://github.com/Jessica264365/Find-A-Hike#prerequisites)
+  - [Installation](https://github.com/Jessica264365/Find-A-Hike#installation)
 
-- [License](https://github.com/Jessica264365/Project-1#license)
-- [Roadmap](https://github.com/Jessica264365/Project-1#roadmap)
-- [Contribute](https://github.com/Jessica264365/Project-1#contribute)
-- [My Contact Information](https://github.com/Jessica264365/Project-1#my-contact-information)
+- [License](https://github.com/Jessica264365/Find-A-Hike#license)
+- [Roadmap](https://github.com/Jessica264365/Find-A-Hike#roadmap)
+- [Contribute](https://github.com/Jessica264365/Find-A-Hike#contribute)
+- [My Contact Information](https://github.com/Jessica264365/Find-A-Hike#my-contact-information)
 
 ## About the Project
 
@@ -39,7 +39,7 @@ Be familier with some JavaScript and read up on the [Materialize documentation](
 
 1. Clone the repository
 
-   git@github.<span></span>com:Jessica264365/Project-1.git
+   git@github.<span></span>com:Jessica264365/Find-A-Hike.git
 
 ## License
 
@@ -47,7 +47,7 @@ None
 
 ## Roadmap
 
-This project does not currently have an open issues. Please check the [issues](https://github.com/Jessica264365/Project-1/issues) page on GitHub for any updates.
+This project does not currently have an open issues. Please check the [issues](https://github.com/Jessica264365/Find-A-Hike/issues) page on GitHub for any updates.
 
 ## Contribute
 
@@ -75,4 +75,4 @@ GitHub Pages:
 - [Nick Pasch](https://github.com/NickPasch)
 - [Graciela Garcia](https://github.com/graciela23garcia)
 
-Link to project: https://github.com/Jessica264365/Project-1
+Link to project: https://github.com/Jessica264365/Find-A-Hike
