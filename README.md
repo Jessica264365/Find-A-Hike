@@ -1,7 +1,7 @@
 # Project 1: Hike Locator
 
 - View the GitHub [repository](https://github.com/Jessica264365/Project-1)
-- View the live [website](https://jessica264365.github.io/Project-1/)
+- View the live [website](https://jessica264365.github.io/Find-A-Hike/)
 
 ## Table of Contents
 
